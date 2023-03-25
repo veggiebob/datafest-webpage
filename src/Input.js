@@ -14,7 +14,26 @@ class Input extends Component {
     }
     
     handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
+      console.log("Send request to server");
+      fetch('/api/text', {
+        method: 'POST',
+        body: JSON.stringify({
+          "text": this.state.value
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+         .then((response) => response.json())
+         .then((data) => {
+            console.log(data);
+            // Handle data
+         })
+         .catch((err) => {
+            console.log(err.message);
+         });
+
+      // alert('A name was submitted: ' + this.state.value);
       event.preventDefault();
     }
   
