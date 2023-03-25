@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Conversation.css';
 import './App.css';
+import relevantConversationRequest from './modelRequests.js'
 class Conversation extends Component {
     
     constructor(props) {
@@ -35,6 +36,7 @@ class Conversation extends Component {
         };
 
         this.clickTab = this.clickTab.bind(this);
+        this.updateConversations = this.updateConversations.bind(this);
     }
 
     clickTab (index) {
@@ -44,12 +46,21 @@ class Conversation extends Component {
         });
     }
 
+    updateConversations (x) {
+        let convs = relevantConversationRequest(/* ? */ x);
+        this.state.setState({
+            content: "reloading",
+            conversations: convs
+        })
+        this.clickTab(0);
+    }
+
     render() {
         return (
             <div id="window">
                 {
                     this.state.conversations.map((conv, idx) => (
-                        <button type="button" onClick={(event) => this.clickTab(idx)}>
+                        <button key={idx} type="button" onClick={(event) => this.clickTab(idx)}>
                             {conv.header}
                         </button>
                     ))

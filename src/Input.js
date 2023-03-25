@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './Input.css';
-
+import chatRequest from './modelRequests.js'
 class Input extends Component {
     constructor(props) {
       super(props);
+      this.callback = props.callback;
       this.state = {value: ''};
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,27 +15,10 @@ class Input extends Component {
     }
     
     handleSubmit(event) {
-      console.log("Send request to server");
-      fetch('/api/text', {
-        method: 'POST',
-        body: JSON.stringify({
-          "text": this.state.value
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      })
-         .then((response) => response.json())
-         .then((data) => {
-            console.log(data);
-            // Handle data
-         })
-         .catch((err) => {
-            console.log(err.message);
-         });
-
-      // alert('A name was submitted: ' + this.state.value);
       event.preventDefault();
+      console.log("Send request to server");
+      chatRequest(this.state.value, (data) => console.log(data), (err) => {});
+      this.callback(this.state.value);
     }
   
     render() {

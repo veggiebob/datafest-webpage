@@ -6,11 +6,18 @@ import ChatWindow from './ChatWindow';
 import Conversation from './Conversation';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.conversation = new Conversation({});
+    this.chatWindow = new ChatWindow({
+      callback: (input) => this.conversation.updateConversations(input)
+    });
+  }
   render() {
     return (
       <div className="App">
-        <ChatWindow />
-        <Conversation />  
+        {this.chatWindow.render()}
+        {this.conversation.render()}
       </div>
     );
   }
