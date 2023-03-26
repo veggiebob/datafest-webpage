@@ -29,6 +29,13 @@ class App extends Component {
           content: 'this is a conversation'
       }
   ]);
+      this.options = new BehaviorSubject({
+        age: [0, 0],
+        ethnicities: [],
+        genders: [],
+        states: [],
+        categories: []
+      });
   }
 
   componentDidMount() {
@@ -51,12 +58,16 @@ class App extends Component {
         <ChatWindow 
           callback={(input) => this.inputState.next(input)}
           pregenSubject={this.inputIsPreGenerated}
-          promptSubject={this.promptState}/>
+          promptSubject={this.promptState}
+          optionsSubject={this.options}
+          conversations={this.conversations}
+          />
         <Conversation 
           inpSubject={this.inputState} 
           pregenSubject={this.inputIsPreGenerated}
           promptSubject={this.promptState}
           conversations={this.conversations}
+          optionsSubject={this.options}
           />
       </div>
     );

@@ -51,3 +51,12 @@ input, button {
 #brain {
     float: right;
 }
+
+#window {
+    width: 500px;
+    background-color: #354C5A;
+    color: #D9DCD0;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px;
+}
