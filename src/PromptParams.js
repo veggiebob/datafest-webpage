@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState, setState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { Slider } from '@mui/material';
@@ -44,9 +44,12 @@ class PromptParams extends Component {
         this.state = {
             states: [],
             genders: [],
-            age: [],
+            age: [25, 75],
             ethnicities: []
         }
+
+        this.agetmp = [0, 0];
+
         this.setStates = this.setStates.bind(this);
         this.setGender = this.setGender.bind(this);
         this.setEthnicities = this.setEthnicities.bind(this);
@@ -54,40 +57,44 @@ class PromptParams extends Component {
     }
 
     setStates(states) {
+        this.options.next(this.state);
         this.setState({
             states: states,
             ...this.state
         });
-        this.options.next(this.state);
     }
 
     setGender(states) {
+        this.options.next(this.state);
         this.setState({
             genders: genders,
             ...this.state
         });
-        this.options.next(this.state);
     }
 
     setEthnicities(eths) {
+        this.options.next(this.state);
         this.setState({
             ethnicities: eths,
             ...this.state
         });
-        this.options.next(this.state);
     }
 
     setAge(ages) {
+        this.agetmp = ages.slice();
+        this.options.next(this.state);
         this.setState({
-            age: ages,
+            age: ages.slice(),
             ...this.state
         });
-        this.options.next(this.state);
     }
     
     render() {
-        
-        // Age, EthnicIdentity
+        // Age
+        const minAge = 18;
+        const maxAge = 100;
+        const stepAge = 1;
+
         return (
             <Stack spacing={3} alignItems="left">
 
@@ -136,14 +143,23 @@ class PromptParams extends Component {
                         />)}
                     />
                 
-                {/* <Slider
-                    getAriaLabel={() => 'Minimum distance'}
-                    value={0}
-                    onChange={console.log}
-                    valueLabelDisplay="auto"
-                    getAriaValueText={"hello?"}
-                    disableSwap
-                /> */}
+            <div>
+                range: {this.agetmp[0]} to {this.agetmp[1]}
+                <input
+                    type="range"
+                    min={minAge}
+                    max={maxAge}
+                    step={stepAge}
+                    onChange={(event) => this.setAge([Number(event.target.value), this.agetmp[1]])}
+                />
+                <input
+                    type="range"
+                    min={minAge}
+                    max={maxAge}
+                    step={stepAge}
+                    onChange={(event) => this.setAge([this.agetmp[0], Number(event.target.value)])}
+                />
+                </div>
             </Stack>
         )
     }
