@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { chatRequest } from './modelRequests';
 import bart from './bartesquire.png';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
