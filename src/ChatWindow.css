@@ -23,7 +23,7 @@
     margin: 4px;
 }
 
-input, button {
+input, button, textarea {
     background-color: #354C5A;
     border: 0px;
     outline: none;

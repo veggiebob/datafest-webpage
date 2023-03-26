@@ -43,7 +43,7 @@ class Input extends Component {
       return (
         <form onSubmit={this.handleSubmit}>
             <label>
-            <input id='input-field' type="text" value={this.state.value} onChange={this.handleChange} />
+            <textarea id='input-field' type="text" value={this.state.value} onChange={this.handleChange} />
             </label>
             <input id='input-submit' type="submit" value={this.pregen.value === null ? "🧠" : "→"}/>
             <br/>
