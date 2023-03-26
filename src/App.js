@@ -22,7 +22,7 @@ class App extends Component {
       },
       {
           header: 'conversation3',
-          content: 'lets do this'
+          content: 'lets do this|*|line2'
       },
       {
           header: 'conversation4',
@@ -45,7 +45,7 @@ class App extends Component {
         chatRequest(input, this.inputIsPreGenerated.value, out => {
           this.conversations.next(out.recommendations.map(x => ({
             header: x.slice(0, 20),
-            content: x.split("|*|").join("\n")
+            content: x
           })));
         }, console.error);
       }

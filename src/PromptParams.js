@@ -193,6 +193,7 @@ class PromptParams extends Component {
                     min={minAge}
                     max={maxAge}
                     step={stepAge}
+                    value={this.agetmp[0]}
                     onChange={(event) => this.setAge([Number(event.target.value), this.agetmp[1]])}
                 />
                 <input
@@ -200,6 +201,7 @@ class PromptParams extends Component {
                     min={minAge}
                     max={maxAge}
                     step={stepAge}
+                    value={this.agetmp[1]}
                     onChange={(event) => this.setAge([this.agetmp[0], Number(event.target.value)])}
                 />
                 </Stack>
