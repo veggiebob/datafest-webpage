@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Input from './Input';
 import ChatWindow from './ChatWindow';
 import Conversation from './Conversation';
-import PromptParams from './PromptParams';
+import { BehaviorSubject } from 'rxjs';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.conversation = new Conversation({});
-    this.chatWindow = new ChatWindow({
-      callback: (input) => this.conversation.updateConversations(input)
-    });
+    this.inputState = new BehaviorSubject("");
   }
   render() {
     return (
       <div className="App">
-        {this.chatWindow.render()}
-        {this.conversation.render()}
+        <Conversation inpSubject={this.inputState}/>
+        <ChatWindow 
+          callback={(input) => this.inputState.next(input)}/>
       </div>
     );
   }

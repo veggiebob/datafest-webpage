@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Input.css';
-import chatRequest from './modelRequests.js'
+import { chatRequest } from './modelRequests.js'
 class Input extends Component {
     constructor(props) {
       super(props);

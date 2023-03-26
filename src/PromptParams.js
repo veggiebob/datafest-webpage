@@ -40,13 +40,56 @@ class PromptParams extends Component {
     
     constructor(props) {
         super(props);
+        this.options = props.optionsSubject;
+        this.state = {
+            states: [],
+            genders: [],
+            age: [],
+            ethnicities: []
+        }
+        this.setStates = this.setStates.bind(this);
+        this.setGender = this.setGender.bind(this);
+        this.setEthnicities = this.setEthnicities.bind(this);
+        this.setAge = this.setAge.bind(this);
+    }
+
+    setStates(states) {
+        this.setState({
+            states: states,
+            ...this.state
+        });
+        this.options.next(this.state);
+    }
+
+    setGender(states) {
+        this.setState({
+            genders: genders,
+            ...this.state
+        });
+        this.options.next(this.state);
+    }
+
+    setEthnicities(eths) {
+        this.setState({
+            ethnicities: eths,
+            ...this.state
+        });
+        this.options.next(this.state);
+    }
+
+    setAge(ages) {
+        this.setState({
+            age: ages,
+            ...this.state
+        });
+        this.options.next(this.state);
     }
     
     render() {
         
         // Age, EthnicIdentity
         return (
-            <Stack spacing={3}alignItems="left">
+            <Stack spacing={3} alignItems="left">
 
                 <Autocomplete
                     multiple
@@ -54,6 +97,7 @@ class PromptParams extends Component {
                     options={GENDERS}
                     getOptionLabel={(option) => option}
                     defaultValue={[]}
+                    onChange={this.setGenders}
                     renderInput={(params) => (
                         <TextField
                             {...params}
@@ -67,6 +111,7 @@ class PromptParams extends Component {
                     options={STATES}
                     getOptionLabel={(option) => option}
                     defaultValue={[]}
+                    onChange={this.setStates}
                     renderInput={(params) => (
                         <TextField
                             {...params}
@@ -81,6 +126,7 @@ class PromptParams extends Component {
                     options={ETHNICITIES}
                     getOptionLabel={(option) => option}
                     defaultValue={[]}
+                    onChange={this.setEthnicities}
                     renderInput={(params) => (
                         <TextField
                             {...params}

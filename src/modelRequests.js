@@ -1,7 +1,7 @@
 
 // chat window requests
 // err_f can be null
-function chatRequest(input, callback, err_f) {
+const chatRequest = (input, callback, err_f) => {
     fetch('/api/text', {
         method: 'POST',
         body: JSON.stringify({
@@ -26,11 +26,14 @@ function chatRequest(input, callback, err_f) {
          });
 }
 
-function relevantConversationRequest(input, callback, err_f) {
-    fetch('/api/convo-search', {
+const pickClientPromptRequest = (selections, callback, err_f) => {
+    fetch('/api/categoricalQuery', {
         method: 'POST',
         body: JSON.stringify({
-            // ???
+            age: [],
+            ethnicities: [],
+            genders: [],
+            states: []
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
@@ -50,3 +53,5 @@ function relevantConversationRequest(input, callback, err_f) {
             }
          });
 }
+
+export {chatRequest, pickClientPromptRequest};
