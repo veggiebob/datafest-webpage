@@ -1,7 +1,7 @@
 import React, {Component, useState, setState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import { Slider } from '@mui/material';
+import { createTheme, Slider, ThemeProvider } from '@mui/material';
 import { Stack } from '@mui/system';
 
 const STATES = ['Kansas', 'Pennsylvania', 'Michigan', 'Alaska',
@@ -115,8 +115,14 @@ class PromptParams extends Component {
         const minAge = 18;
         const maxAge = 100;
         const stepAge = 1;
+        const theme = createTheme({
+            palette: {
+              mode: 'dark',
+            },
+          });
 
         return (
+            <ThemeProvider theme={theme}>
             <Stack spacing={3} alignItems="left">
 
                 <Autocomplete
@@ -198,6 +204,7 @@ class PromptParams extends Component {
                 />
                 </Stack>
             </Stack>
+            </ThemeProvider>
         )
     }
 }

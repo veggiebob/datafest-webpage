@@ -22,12 +22,14 @@ class ChatWindow extends Component {
             <div id="model-output">
               {this.state.content}
             </div>
+            <div id='user-input'>
             <Input
               promptSubject={this.prompt} 
               pregen={this.pregen}
               callback={(input) => {
                 this.callback(input);
               }}/>
+              </div>
           </div>
         );
     }

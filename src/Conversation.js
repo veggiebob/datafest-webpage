@@ -119,11 +119,10 @@ class Conversation extends Component {
                     {this.state.content}
                 </div>
                 <PromptParams optionsSubject={this.options}/>
-                <button type="button" onClick={() => this.updatePrompt(this.options.value)}>🎲</button>
-                <div>
-                    Example Prompt: <br/>
+                <button type="button" onClick={() => this.updatePrompt(this.options.value)}>Randomize 🎲</button>
+                {/* <div>
                     {this.state.prompt}
-                </div>
+                </div> */}
             </div>
         )
     }

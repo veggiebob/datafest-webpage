@@ -21,7 +21,7 @@ class App extends Component {
         chatRequest(input, this.inputIsPreGenerated.value, out => {
           this.conversations.next(out.recommendations.map(x => ({
             header: x.slice(0, 20),
-            content: x
+            content: x.split("|*|").join("\n")
           })));
         }, console.error);
       }
@@ -30,7 +30,7 @@ class App extends Component {
 
   render() {
     return (
-      <div id="outer" className="App">
+      <div id="outer" className="bg-slate-700">
         <ChatWindow 
           callback={(input) => this.inputState.next(input)}
           pregenSubject={this.inputIsPreGenerated}

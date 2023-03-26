@@ -1,3 +1,23 @@
 #window {
-    background-color: white;
+    width: 500px;
+    background-color: #354C5A;
+    color: #D9DCD0;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 10px;
+}
+button {
+    border-radius: 5px;
+    background-color: #354C5A;
+    border: 0px;
+    outline: none;
+    color: #D9DCD0;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+button:hover {
+    background-color: #D9DCD0;
+    color: black;
+    cursor: pointer;
 }

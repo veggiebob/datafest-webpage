@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Input.css';
 import { chatRequest } from './modelRequests.js'
+
 class Input extends Component {
     constructor(props) {
       super(props);
@@ -44,9 +45,8 @@ class Input extends Component {
             <label>
             <input id='input-field' type="text" value={this.state.value} onChange={this.handleChange} />
             </label>
-            <input id='input-submit' type="submit" value="Submit" />
+            <input id='input-submit' type="submit" value={this.pregen.value === null ? "🧠" : "→"}/>
             <br/>
-            {this.pregen.value === null ? (<span>🧠</span>) : (<span>preloaded prompt</span>)}
         </form>
       );
     }
