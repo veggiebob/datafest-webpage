@@ -54,21 +54,24 @@ class App extends Component {
 
   render() {
     return (
-      <div id="outer" className="bg-slate-700">
-        <ChatWindow 
-          callback={(input) => this.inputState.next(input)}
-          pregenSubject={this.inputIsPreGenerated}
-          promptSubject={this.promptState}
-          optionsSubject={this.options}
-          conversations={this.conversations}
-          />
-        <Conversation 
-          inpSubject={this.inputState} 
-          pregenSubject={this.inputIsPreGenerated}
-          promptSubject={this.promptState}
-          conversations={this.conversations}
-          optionsSubject={this.options}
-          />
+      <div>
+        <div id="outer" className="bg-slate-700">
+          <ChatWindow 
+            callback={(input) => this.inputState.next(input)}
+            pregenSubject={this.inputIsPreGenerated}
+            promptSubject={this.promptState}
+            optionsSubject={this.options}
+            conversations={this.conversations}
+            />
+          <Conversation 
+            inpSubject={this.inputState} 
+            pregenSubject={this.inputIsPreGenerated}
+            promptSubject={this.promptState}
+            conversations={this.conversations}
+            optionsSubject={this.options}
+            />
+        </div>
+        <a href="/dash/index.html">Map</a>
       </div>
     );
   }
