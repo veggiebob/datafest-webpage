@@ -66,7 +66,7 @@ class Conversation extends Component {
         let convs = pickClientPromptRequest(options, data => {
             // deal with data format here
             this.state.setState({
-                prompt: data,
+                prompt: JSON.stringify(data),
                 ...this.state
             })
             this.clickTab(0);

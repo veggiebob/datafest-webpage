@@ -17,7 +17,6 @@ class Input extends Component {
     handleSubmit(event) {
       event.preventDefault();
       console.log("Send request to server");
-      chatRequest(this.state.value, (data) => console.log(data), (err) => {});
       this.callback(this.state.value);
     }
   
