@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Input from "./Input";
 import './App.css';
 import './ChatWindow.css';
+import PromptParams from "./PromptParams";
 
 class ChatWindow extends Component {
     constructor(props) {

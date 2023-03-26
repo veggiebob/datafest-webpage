@@ -4,6 +4,7 @@ import './App.css';
 import Input from './Input';
 import ChatWindow from './ChatWindow';
 import Conversation from './Conversation';
+import PromptParams from './PromptParams';
 
 class App extends Component {
   constructor(props) {

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './Conversation.css';
 import './App.css';
-import relevantConversationRequest from './modelRequests.js'
+import relevantConversationRequest from './modelRequests.js';
+import PromptParams from './PromptParams';
+
 class Conversation extends Component {
     
     constructor(props) {
@@ -68,6 +70,7 @@ class Conversation extends Component {
                 <div id="output" className="output-window">
                     {this.state.content}
                 </div>
+                <PromptParams />
             </div>
         )
     }
