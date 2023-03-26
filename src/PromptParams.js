@@ -109,6 +109,10 @@ class PromptParams extends Component {
             ...this.state
         });
     }
+
+    componentDidMount() {
+        this.setAge(this.agetmp);
+    }
     
     render() {
         // Age
