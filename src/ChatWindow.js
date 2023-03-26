@@ -69,7 +69,7 @@ class ChatWindow extends Component {
             callback={(input) => {
               this.callback(input);
               this.setState({
-                content: [input].concat(this.state.content),
+                content: [input],
               });
             }}
           />
