@@ -53,7 +53,8 @@ class Conversation extends Component {
     clickTab (index) {
         this.setState({
             content: this.state.conversations[index].content,
-            conversations: this.state.conversations
+            conversations: this.state.conversations,
+            prompt: this.state.prompt
         });
     }
 
@@ -62,15 +63,24 @@ class Conversation extends Component {
     }
 
     updatePrompt (options) {
-        console.log('updating prompt with')
-        console.log(options);
-        let convs = pickClientPromptRequest(options, data => {
+        // console.log('updating prompt with')
+        // console.log(options);
+        pickClientPromptRequest(options, data => {
             // deal with data format here
-            this.state.setState({
-                prompt: JSON.stringify(data),
-                ...this.state
+            // console.log(data);
+            let prompt = "No prompts match this query!";
+            if (data.success) {
+                prompt = "Question ID " + data.questionUno + ": " + data.text
+            }
+            this.setState({
+                prompt: prompt,
+                conversations: this.state.conversations,
+                content: this.state.content
+            }, () => {
+                // console.log("state has been set!");
+                // console.log(this.state)
             })
-            this.clickTab(0);
+            // this.clickTab(0);
         }, console.error);
         
     }
@@ -89,7 +99,9 @@ class Conversation extends Component {
                     {this.state.content}
                 </div>
                 <PromptParams optionsSubject={this.options}/>
+                <button type="button" onClick={() => this.updatePrompt(this.options.value)}>🎲</button>
                 <div>
+                    Example Prompt: <br/>
                     {this.state.prompt}
                 </div>
             </div>
