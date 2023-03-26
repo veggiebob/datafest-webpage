@@ -34,7 +34,13 @@ const ETHNICITIES = [
  'Not Hispanic or Latino',
  'Caucasian',
  'Native Hawaiian / Pacific Islander'
-]
+];
+
+const CATEGORIES = ['Individual Rights', 'Family and Children', 'Other',
+'Housing and Homelessness', 'Health and Disability',
+'Work, Employment and Unemployment',
+'Consumer Financial Questions', 'Income Maintenance', 'Juvenile',
+'Education'];
 
 class PromptParams extends Component {
     
@@ -45,7 +51,8 @@ class PromptParams extends Component {
             states: [],
             genders: [],
             age: [18, 100],
-            ethnicities: []
+            ethnicities: [],
+            categories: []
         }
 
         this.agetmp = [18, 100];
@@ -54,6 +61,7 @@ class PromptParams extends Component {
         this.setGenders = this.setGenders.bind(this);
         this.setEthnicities = this.setEthnicities.bind(this);
         this.setAge = this.setAge.bind(this);
+        this.setCategories = this.setCategories.bind(this);
     }
 
     setStates(states) {
@@ -89,6 +97,15 @@ class PromptParams extends Component {
         this.options.next(this.state);
         this.setState({
             age: ages.slice(),
+            ...this.state
+        });
+    }
+
+    setCategories(cats) {
+        this.state.categories = cats;
+        this.options.next(this.state);
+        this.setState({
+            categories: cats,
             ...this.state
         });
     }
@@ -144,6 +161,21 @@ class PromptParams extends Component {
                             variant="standard"
                             label="ethnicity"
                             placeholder="ethnicities?"
+                        />)}
+                    />
+
+                <Autocomplete
+                    multiple
+                    options={CATEGORIES}
+                    getOptionLabel={(option) => option}
+                    defaultValue={[]}
+                    onChange={(a, b) => this.setCategories(b)}
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            variant="standard"
+                            label="category"
+                            placeholder="categories?"
                         />)}
                     />
             
