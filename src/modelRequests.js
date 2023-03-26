@@ -29,12 +29,7 @@ const chatRequest = (input, callback, err_f) => {
 const pickClientPromptRequest = (selections, callback, err_f) => {
     fetch('/api/categoricalQuery', {
         method: 'POST',
-        body: JSON.stringify({
-            age: [],
-            ethnicities: [],
-            genders: [],
-            states: []
-        }),
+        body: JSON.stringify(selections),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         }
