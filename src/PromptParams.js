@@ -44,11 +44,11 @@ class PromptParams extends Component {
         this.state = {
             states: [],
             genders: [],
-            age: [25, 75],
+            age: [18, 100],
             ethnicities: []
         }
 
-        this.agetmp = [0, 0];
+        this.agetmp = [18, 100];
 
         this.setStates = this.setStates.bind(this);
         this.setGender = this.setGender.bind(this);
@@ -142,9 +142,10 @@ class PromptParams extends Component {
                             placeholder="ethnicities?"
                         />)}
                     />
-                
-            <div>
-                range: {this.agetmp[0]} to {this.agetmp[1]}
+            
+            
+            <Stack>
+                <label>range: {this.agetmp[0]} to {this.agetmp[1]}</label>
                 <input
                     type="range"
                     min={minAge}
@@ -159,7 +160,7 @@ class PromptParams extends Component {
                     step={stepAge}
                     onChange={(event) => this.setAge([this.agetmp[0], Number(event.target.value)])}
                 />
-                </div>
+                </Stack>
             </Stack>
         )
     }
