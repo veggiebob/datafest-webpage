@@ -47,7 +47,7 @@ class Conversation extends Component {
         };
 
         this.clickTab = this.clickTab.bind(this);
-        this.updateConversations = this.updatePrompt.bind(this);
+        this.updatePrompt = this.updatePrompt.bind(this);
     }
 
     clickTab (index) {
@@ -62,7 +62,8 @@ class Conversation extends Component {
     }
 
     updatePrompt (options) {
-        console.log('updating prompt')
+        console.log('updating prompt with')
+        console.log(options);
         let convs = pickClientPromptRequest(options, data => {
             // deal with data format here
             this.state.setState({
