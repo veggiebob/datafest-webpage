@@ -4,6 +4,7 @@ import ChatWindow from './ChatWindow';
 import Conversation from './Conversation';
 import { BehaviorSubject } from 'rxjs';
 import { chatRequest } from './modelRequests';
+import bart from './bartesquire.png';
 
 class App extends Component {
   constructor(props) {
@@ -70,8 +71,9 @@ class App extends Component {
             conversations={this.conversations}
             optionsSubject={this.options}
             />
+            <img src={bart}></img>
         </div>
-        <a href="/dash/index.html">Map</a>
+        <a href="/dash/index.html" style={{fontSize: '20px', color: 'white', fontWeight: 'bold'}}>Supplementary Resources</a>
       </div>
     );
   }
