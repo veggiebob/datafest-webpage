@@ -11,7 +11,24 @@ class App extends Component {
     this.inputState = new BehaviorSubject("");
     this.promptState = new BehaviorSubject(""); // contains prompt text
     this.inputIsPreGenerated = new BehaviorSubject(null); // null if no, else an ID
-    this.conversations = new BehaviorSubject([]);
+    this.conversations = new BehaviorSubject([
+      {
+          header: 'conversation',
+          content: 'conversation A!'
+      },
+      {
+          header: 'conversation2',
+          content: 'hello world'
+      },
+      {
+          header: 'conversation3',
+          content: 'lets do this'
+      },
+      {
+          header: 'conversation4',
+          content: 'this is a conversation'
+      }
+  ]);
   }
 
   componentDidMount() {

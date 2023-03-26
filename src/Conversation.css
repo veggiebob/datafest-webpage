@@ -21,3 +21,10 @@ button:hover {
     color: black;
     cursor: pointer;
 }
+
+#related {
+    border: white solid 1px;
+    border-radius: 5px;
+    padding: 5px;
+    padding-bottom: 20px;
+}

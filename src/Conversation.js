@@ -108,6 +108,9 @@ class Conversation extends Component {
     render() {
         return (
             <div id="window">
+                {this.state.conversations.length > 0 ? (
+                <div id='related'>
+                    <h3>Related Questions</h3>
                 {
                     this.state.conversations.map((conv, idx) => (
                         <button key={idx} type="button" onClick={(event) => this.clickTab(idx)}>
@@ -115,6 +118,7 @@ class Conversation extends Component {
                         </button>
                     ))
                 }
+                </div>) : ""}
                 <div id="output" className="output-window">
                     {this.state.content}
                 </div>
