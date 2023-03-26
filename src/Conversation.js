@@ -57,7 +57,7 @@ class Conversation extends Component {
   render() {
     console.log(this.state.content);
     return (
-      <div id="window">
+      <div id="c-window">
         {this.state.conversations.length > 0 ? (
           <div id="related">
             <h3>Related Questions</h3>

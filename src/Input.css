@@ -1,6 +1,9 @@
 #input-field {
     width: 90%;
     min-height: 200px;
+    width: 450px;
+    min-width: 450px;
+    max-width: 450px;
 }
 #input-submit {
     width: 8%;

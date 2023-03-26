@@ -1,5 +1,5 @@
-#window {
-    width: 500px;
+#c-window {
+    width: fit-content;
     background-color: #354C5A;
     color: #D9DCD0;
     border-radius: 5px;
