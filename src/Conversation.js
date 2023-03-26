@@ -17,6 +17,9 @@ class Conversation extends Component {
         }
         */
         this.input = props.inpSubject;
+        this.pregen = props.pregenSubject;
+        this.prompt = props.promptSubject;
+        this.convSub = props.conversations;
         this.options = new BehaviorSubject({
             age: [0, 0],
             ethnicities: [],
@@ -61,6 +64,19 @@ class Conversation extends Component {
 
     componentDidMount() {
         this.options.subscribe(this.updatePrompt);
+        this.convSub.subscribe(convs => {
+            console.log(convs);
+            if (convs === undefined || convs === null) {
+                console.log("bad response!")
+                console.log(convs);
+            } else {
+                this.setState({
+                    content: "",
+                    conversations: convs,
+                    prompt: this.state.prompt
+                })
+            }
+        })
     }
 
     updatePrompt (options) {
@@ -71,7 +87,10 @@ class Conversation extends Component {
             // console.log(data);
             let prompt = "No prompts match this query!";
             if (data.success) {
-                prompt = "Question ID " + data.questionUno + ": " + data.text
+                prompt = "Question ID " + data.questionUno + ": " + data.text;
+                console.log("logging. prompt=" + this.prompt + " pregen=" + this.pregen);
+                this.prompt.next(data.text);
+                this.pregen.next(data.questionUno);
             }
             this.setState({
                 prompt: prompt,

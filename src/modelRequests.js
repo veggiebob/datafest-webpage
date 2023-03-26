@@ -1,11 +1,14 @@
 
 // chat window requests
 // err_f can be null
-const chatRequest = (input, callback, err_f) => {
+const chatRequest = (input, questionUno, callback, err_f) => {
+    console.log("--> input: " + input);
+    console.log("--> questionUno: " + questionUno);
     fetch('/api/text', {
         method: 'POST',
         body: JSON.stringify({
-          "text": input
+            text: input,
+            questionUno: questionUno
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',

@@ -4,6 +4,10 @@
     color: black;
 }
 
+#outer {
+    display: flex;
+}
+
 body {
     background-color: white;
 }
