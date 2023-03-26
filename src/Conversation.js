@@ -74,16 +74,11 @@ class Conversation extends Component {
         ) : (
           ""
         )}
-        <div id="output" className="output-window">
           {this.state.content.split("|*|").map((x) => (
-            <div>
+            <div className="conversation-message">
               {x}
-              <br/>
-              <br/>
-              <br/>
             </div>
           ))}
-        </div>
       </div>
     );
   }
